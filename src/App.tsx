@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "./Header";
-import Showcase from "./showcase";
+import Header from "./components/Header";
+import Showcase from "./components/Showcase";
 function App() {
   const [dark,setDark] = useState(false)
   return (
