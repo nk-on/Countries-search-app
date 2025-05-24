@@ -2,13 +2,15 @@ import CountryCard from "./CountryCard";
 import SearchBar from "./SearchBar";
 import SelectForm from "./selectionForm/SelectForm";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { DataContext } from "../DataContext";
 function Showcase() {
   const [query, setQuery] = useState<string>("");
-  const [data, setData] = useState(undefined);
+  const {data,setData} = useContext(DataContext);
   async function fetchData() {
     const res = await fetch("https://restcountries.com/v3.1/all");
-    const data = await res.json();
-    setData(data);
+    const fetchedData = await res.json();
+    setData(fetchedData);
   }
   useEffect(() => {
     fetchData();

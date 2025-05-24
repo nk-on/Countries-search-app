@@ -1,5 +1,6 @@
 import { Link } from "react-router";
-export default function CountryCard({ country }) {
+import type { Country } from "../DataInterface";
+export default function CountryCard({ country }:{country:Country}) {
   const countryName = country.altSpellings[1];
   const population = country.population;
   const capital = country.capital;
