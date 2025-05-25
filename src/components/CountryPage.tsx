@@ -13,6 +13,7 @@ export default function CountryPage() {
   const { data } = useContext(DataContext);
   const { id } = useParams();
   const country = data?.find((element) => Number(id) === element.area);
+  console.log(country);
   const name = country?.altSpellings[1];
   const flag = country?.flags.png;
   const nativeName = country?.altSpellings[2];
@@ -20,7 +21,14 @@ export default function CountryPage() {
   const region = country?.region;
   const subRegion = country?.subregion;
   const capital = country?.capital;
-  const countryCode = country?.altSpellings[0];
+  const countryCode = country?.tld[0];
+  const currencyObj = country?.currencies;
+  let currency: string | undefined;
+  let currencyName: string | undefined;
+  if (currencyObj) {
+    currency = Object.keys(currencyObj)[0];
+    currencyName = currencyObj[currency]?.name;
+  }
   return (
     <div className="w-[100%] h-[100%]">
       <div>
@@ -34,6 +42,8 @@ export default function CountryPage() {
         <DataContainer title="Region" data={region} />
         <DataContainer title="Subregion" data={subRegion} />
         <DataContainer title="Capital" data={capital} />
+        <DataContainer title="Top level domain" data={countryCode} />
+        <DataContainer title="Currency" data={currencyName} />
       </div>
     </div>
   );
