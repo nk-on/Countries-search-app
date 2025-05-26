@@ -6,11 +6,15 @@ import { useContext } from "react";
 import { DataContext } from "../DataContext";
 function Showcase() {
   const [query, setQuery] = useState<string>("");
-  const {data,setData} = useContext(DataContext);
+  const { data, setData } = useContext(DataContext);
   async function fetchData() {
-    const res = await fetch("https://restcountries.com/v3.1/all");
-    const fetchedData = await res.json();
-    setData(fetchedData);
+    try {
+      const res = await fetch("https://restcountries.com/v3.1/all");
+      const fetchedData = await res.json();
+      setData(fetchedData);
+    } catch {
+      console.log("Error");
+    }
   }
   useEffect(() => {
     fetchData();
