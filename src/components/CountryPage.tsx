@@ -1,21 +1,20 @@
-import { useContext } from "react";
-import { DataContext } from "../DataContext";
 import { useParams } from "react-router";
+import type { Country } from "../DataInterface";
+import useFetchData from "../useFetchData";
 function DataContainer({ title, data }) {
   return (
     <div className="flex flex-row">
-      <h3>{title}:</h3>
+      <h3 className="font-bold">{title}:</h3>
       <span>{data}</span>
     </div>
   );
 }
 export default function CountryPage() {
-  const { data } = useContext(DataContext);
   const { id } = useParams();
-  const country = data?.find((element) => Number(id) === element.area);
-  console.log(country);
+  const data:Country[] = useFetchData('https://restcountries.com/v3.1/all')
+  const country = data?.find((element) => Number(id) === element.area)
   const name = country?.altSpellings[1];
-  const flag = country?.flags.png;
+  const flag = country?.flags.svg;
   const nativeName = country?.altSpellings[2];
   const population = country?.population;
   const region = country?.region;
@@ -30,20 +29,24 @@ export default function CountryPage() {
     currencyName = currencyObj[currency]?.name;
   }
   return (
-    <div className="w-[100%] h-[100%]">
+    <div className="w-[100%] h-[100%] flex items-center justify-evenly">
       <div>
-        <img src={flag}></img>
+        <img src={flag} className="h-[401px] w-[560px]" />
       </div>
-      <div>
-        <DataContainer title="Country Code" data={countryCode} />
-        <DataContainer title="Country Name" data={name} />
-        <DataContainer title="Native Name" data={nativeName} />
-        <DataContainer title="Population" data={population} />
-        <DataContainer title="Region" data={region} />
-        <DataContainer title="Subregion" data={subRegion} />
-        <DataContainer title="Capital" data={capital} />
-        <DataContainer title="Top level domain" data={countryCode} />
-        <DataContainer title="Currency" data={currencyName} />
+      <div className="flex w-[30%] justify-between">
+        <div>
+          <DataContainer title="Country Code" data={countryCode} />
+          <DataContainer title="Country Name" data={name} />
+          <DataContainer title="Native Name" data={nativeName} />
+          <DataContainer title="Population" data={population} />
+          <DataContainer title="Region" data={region} />
+          <DataContainer title="Subregion" data={subRegion} />
+          <DataContainer title="Capital" data={capital} />
+        </div>
+        <div>
+          <DataContainer title="Top level domain" data={countryCode} />
+          <DataContainer title="Currency" data={currencyName} />
+        </div>
       </div>
     </div>
   );
