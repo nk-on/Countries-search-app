@@ -1,6 +1,9 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import type { Country } from "../DataInterface";
 import useFetchData from "../useFetchData";
+import countries from "i18n-iso-countries";
+import enLocale from "i18n-iso-countries/langs/en.json";
+countries.registerLocale(enLocale);
 function DataContainer({ title, data }) {
   return (
     <div className="flex flex-row">
@@ -11,8 +14,9 @@ function DataContainer({ title, data }) {
 }
 export default function CountryPage() {
   const { id } = useParams();
-  const data:Country[] = useFetchData('https://restcountries.com/v3.1/all')
-  const country = data?.find((element) => Number(id) === element.area)
+  const data: Country[] = useFetchData("https://restcountries.com/v3.1/all");
+  const country = data?.find((element) => Number(id) === element.area);
+  const borderingCountries = country?.borders;
   const name = country?.altSpellings[1];
   const flag = country?.flags.svg;
   const nativeName = country?.altSpellings[2];
@@ -33,19 +37,35 @@ export default function CountryPage() {
       <div>
         <img src={flag} className="h-[401px] w-[560px]" />
       </div>
-      <div className="flex w-[30%] justify-between">
-        <div>
-          <DataContainer title="Country Code" data={countryCode} />
-          <DataContainer title="Country Name" data={name} />
-          <DataContainer title="Native Name" data={nativeName} />
-          <DataContainer title="Population" data={population} />
-          <DataContainer title="Region" data={region} />
-          <DataContainer title="Subregion" data={subRegion} />
-          <DataContainer title="Capital" data={capital} />
+      <div className="flex flex-col w-[30%]">
+        <div className="flex justify-between">
+          <div>
+            <DataContainer title="Country Code" data={countryCode} />
+            <DataContainer title="Country Name" data={name} />
+            <DataContainer title="Native Name" data={nativeName} />
+            <DataContainer title="Population" data={population} />
+            <DataContainer title="Region" data={region} />
+            <DataContainer title="Subregion" data={subRegion} />
+            <DataContainer title="Capital" data={capital} />
+          </div>
+          <div>
+            <DataContainer title="Top level domain" data={countryCode} />
+            <DataContainer title="Currency" data={currencyName} />
+          </div>
         </div>
         <div>
-          <DataContainer title="Top level domain" data={countryCode} />
-          <DataContainer title="Currency" data={currencyName} />
+          <h3 className="font-bold">Border countries:</h3>
+          <ul className="flex justify-between">
+            {borderingCountries?.map((country, idx) => {
+              if (country !== "UNK") {
+                return (
+                  <li key={idx} className="min-w-[96px] h-[28px] shadow-custom-gray">
+                    {countries.getName(country, "en")}
+                  </li>
+                );
+              }
+            })}
+          </ul>
         </div>
       </div>
     </div>
