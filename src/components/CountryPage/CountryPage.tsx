@@ -26,41 +26,52 @@ export default function CountryPage() {
     currencyName = currencyObj[currency]?.name;
   }
   return (
-    <div className="w-[100%] h-[100%] flex items-center justify-evenly">
-      <div>
-        <img src={flag} className="h-[401px] w-[560px]" />
-      </div>
-      <div className="flex flex-col w-[30%]">
-        <div className="flex justify-between">
-          <div>
-            <DataContainer title="Country Code" data={countryCode} />
-            <DataContainer title="Country Name" data={name} />
-            <DataContainer title="Native Name" data={nativeName} />
-            <DataContainer title="Population" data={population} />
-            <DataContainer title="Region" data={region} />
-            <DataContainer title="Subregion" data={subRegion} />
-            <DataContainer title="Capital" data={capital} />
-          </div>
-          <div>
-            <DataContainer title="Top level domain" data={countryCode} />
-            <DataContainer title="Currency" data={currencyName} />
-          </div>
+    <>
+      <Link to={"/"}>
+        <div className="absolute flex items-center gap-[5px] left-[10%] top-[20%] cursor-pointer">
+          <img src="public/back.svg" alt="back-button" />
+          Back
         </div>
+      </Link>
+      <div className="w-[100%] h-[100%] flex items-center justify-evenly">
         <div>
-          <h3 className="font-bold">Border countries:</h3>
-          <ul className="flex justify-between">
-            {borderingCountries?.map((country, idx) => {
-              if (country !== "UNK") {
-                return (
-                  <li key={idx} className="min-w-[96px] h-[28px] shadow-custom-gray">
-                    {countries.getName(country, "en")}
-                  </li>
-                );
-              }
-            })}
-          </ul>
+          <img src={flag} className="h-[401px] w-[560px]" />
+        </div>
+        <div className="flex flex-col w-[30%]">
+          <div className="flex justify-between">
+            <div>
+              <DataContainer title="Country Code" data={countryCode} />
+              <DataContainer title="Country Name" data={name} />
+              <DataContainer title="Native Name" data={nativeName} />
+              <DataContainer title="Population" data={population} />
+              <DataContainer title="Region" data={region} />
+              <DataContainer title="Subregion" data={subRegion} />
+              <DataContainer title="Capital" data={capital} />
+            </div>
+            <div>
+              <DataContainer title="Top level domain" data={countryCode} />
+              <DataContainer title="Currency" data={currencyName} />
+            </div>
+          </div>
+          <div className="flex">
+            <h3 className="font-bold">Border countries:</h3>
+            <ul className="flex justify-between">
+              {borderingCountries?.map((country, idx) => {
+                if (country !== "UNK") {
+                  return (
+                    <li
+                      key={idx}
+                      className="min-w-[96px] h-[28px] shadow-custom-gray flex justify-center items-center"
+                    >
+                      {countries.getName(country, "en")}
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
