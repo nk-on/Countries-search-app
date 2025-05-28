@@ -1,17 +1,10 @@
 import { Link, useParams } from "react-router";
-import type { Country } from "../DataInterface";
-import useFetchData from "../useFetchData";
+import type { Country } from "../../DataInterface";
+import useFetchData from "../../useFetchData";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
+import DataContainer from "./DataCointainer";
 countries.registerLocale(enLocale);
-function DataContainer({ title, data }) {
-  return (
-    <div className="flex flex-row">
-      <h3 className="font-bold">{title}:</h3>
-      <span>{data}</span>
-    </div>
-  );
-}
 export default function CountryPage() {
   const { id } = useParams();
   const data: Country[] = useFetchData("https://restcountries.com/v3.1/all");
