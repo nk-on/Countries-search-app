@@ -7,8 +7,7 @@ import DataContainer from "./DataCointainer";
 countries.registerLocale(enLocale);
 export default function CountryPage() {
   const { id } = useParams();
-  const data: Country[] = useFetchData("https://restcountries.com/v3.1/all");
-  const country = data?.find((element) => Number(id) === element.area);
+  const country:Country = useFetchData(`https://restcountries.com/v3.1/alpha?codes=${id}`);
   const borderingCountries = country?.borders;
   const name = country?.altSpellings[1];
   const flag = country?.flags.svg;
@@ -55,15 +54,15 @@ export default function CountryPage() {
           </div>
           <div className="flex">
             <h3 className="font-bold">Border countries:</h3>
-            <ul className="flex justify-between">
+            <ul className="flex flex-wrap justify-between">
               {borderingCountries?.map((country, idx) => {
                 if (country !== "UNK") {
                   return (
                     <li
                       key={idx}
-                      className="min-w-[96px] h-[28px] shadow-custom-gray flex justify-center items-center"
+                      className="min-w-[96px] h-[28px] shadow-custom-gray flex justify-center items-center cursor-pointer"
                     >
-                      {countries.getName(country, "en")}
+                      <Link to={`/${country}`}>{countries.getName(country, "en")}</Link>
                     </li>
                   );
                 }

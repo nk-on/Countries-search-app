@@ -6,7 +6,7 @@ export default function CountryCard({ country }:{country:Country}) {
   const capital = country.capital;
   const region = country.continents[0];
   const flag = country.flags.png;
-  const id = country.area;
+  const id = country.cioc
   return (
     <Link to = {`/${id}`}>
       <div className="mb-[40px] cursor-pointer w-[264px] bg-[#fff] dark:bg-[#202C36] shadow-custom-light ">
