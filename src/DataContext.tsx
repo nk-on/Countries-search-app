@@ -1,10 +1,9 @@
 import { createContext } from "react";
-import type { Country } from "./DataInterface";
 interface DataContextType {
-  data: Country[] | null,
-  setData: React.Dispatch<React.SetStateAction<Country[] | null>>;
+  selectedRegion: string;
+  setSelectedRegion:React.Dispatch<React.SetStateAction<string>>;
 }
 export const DataContext = createContext<DataContextType>({
-  data: null,
-  setData: () => {},
+  selectedRegion: '',
+  setSelectedRegion: () => {},
 });

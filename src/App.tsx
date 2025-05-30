@@ -3,14 +3,13 @@ import "./App.css";
 import Header from "./components/Header";
 import { Outlet } from "react-router";
 import { DataContext } from "./DataContext";
-import  type { Country } from "./DataInterface";
 function App() {
   const [dark, setDark] = useState(false);
-  const [data, setData] = useState<Country[] | null>(null);
+  const [ selectedRegion, setSelectedRegion] = useState<string>("All");
   return (
     <>
       <div className={`w-[100vw] h-[100vh] ${dark ? "dark" : ""}`}>
-        <DataContext.Provider value={{data,setData}}>
+        <DataContext.Provider value={{selectedRegion,setSelectedRegion}}>
           <Header setDark={setDark}></Header>
           <Outlet />
         </DataContext.Provider>

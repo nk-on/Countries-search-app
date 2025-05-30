@@ -4,7 +4,7 @@ export const continents = [
         id: 0
     },
     {
-        name: "America",
+        name: "Americas",
         id: 1
     },
     {
@@ -18,5 +18,9 @@ export const continents = [
     {
         name: "Oceania",
         id: 4
+    },
+    {
+        name: "All",
+        id: 5
     },
 ]
