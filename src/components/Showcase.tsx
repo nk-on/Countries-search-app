@@ -3,9 +3,10 @@ import SearchBar from "./SearchBar";
 import SelectForm from "./selectionForm/SelectForm";
 import {  useState } from "react";
 import useFetchData from "../useFetchData";
+import type { Country } from "../DataInterface";
 function Showcase() {
   const [query, setQuery] = useState<string>("");
-  const data = useFetchData('https://restcountries.com/v3.1/all')
+  const data:Country[] | undefined  = useFetchData('https://restcountries.com/v3.1/all')
   return (
     <div className="max-w-[100vw] h-[90%] dark:bg-[#202C36] bg-[#FAFAFA]">
       <div className="w-[100%] relative top-[30px] flex flex-col gap-[30px] lg:flex-row justify-between lg:items-center px-[30px]">

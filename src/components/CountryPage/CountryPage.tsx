@@ -7,7 +7,9 @@ import DataContainer from "./DataCointainer";
 countries.registerLocale(enLocale);
 export default function CountryPage() {
   const { id } = useParams();
-  const country:Country = useFetchData(`https://restcountries.com/v3.1/alpha?codes=${id}`);
+  const data:Country[] | undefined  = useFetchData(`https://restcountries.com/v3.1/alpha?codes=${id}`);
+  console.log(data)
+  const country = data?.[0];
   const borderingCountries = country?.borders;
   const name = country?.altSpellings[1];
   const flag = country?.flags.svg;
