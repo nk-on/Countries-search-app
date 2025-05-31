@@ -14,6 +14,11 @@ export default function SearchBar() {
         type="text"
         placeholder="search for a country"
         className="h-[100%] w-[90%] outline-none dark:bg-[#2B3844]"
+        onKeyDown={(event)=>{
+          if(event.key === "Enter"){
+             navigate(`/${query.current}`)
+          }
+        }}
         onChange={(e)=>{
           query.current = e.target.value;
         }}
