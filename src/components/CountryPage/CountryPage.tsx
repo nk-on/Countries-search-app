@@ -5,6 +5,7 @@ import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import DataContainer from "./DataCointainer";
 import { NotFoundPage } from "../NotFoundPage";
+import Loading from "../Loading";
 countries.registerLocale(enLocale);
 export default function CountryPage() {
   const { id } = useParams();
@@ -12,7 +13,7 @@ export default function CountryPage() {
     `https://restcountries.com/v3.1/name/${id}`
   );
   if (data === undefined) {
-    return <NotFoundPage />
+    return <Loading />
   }
   if ("status" in data && data.status === 404) {
     return <NotFoundPage />
