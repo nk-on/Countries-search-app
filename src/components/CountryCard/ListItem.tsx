@@ -4,8 +4,8 @@ interface ListItem {
 }
 function ListItem({ title, data }:ListItem) {
   return (
-    <li>
-      {title} <span>{data}</span>
+    <li className="flex dark:text-[#fff]">
+      <p className="font-bold">{title} </p>:<span>{data}</span>
     </li>
   );
 }
