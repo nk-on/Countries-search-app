@@ -1,14 +1,22 @@
 import { Link, useParams } from "react-router";
-import type { Country } from "../../DataInterface";
+import type { Country, NotFound } from "../../DataInterface";
 import useFetchData from "../../useFetchData";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import DataContainer from "./DataCointainer";
+import { NotFoundPage } from "../NotFoundPage";
 countries.registerLocale(enLocale);
 export default function CountryPage() {
   const { id } = useParams();
-  const data:Country[] | undefined  = useFetchData(`https://restcountries.com/v3.1/name/${id}`);
-  console.log(data)
+  const data: Country[] | undefined | NotFound = useFetchData(
+    `https://restcountries.com/v3.1/name/${id}`
+  );
+  if (data === undefined) {
+    return <NotFoundPage />
+  }
+  if ("status" in data && data.status === 404) {
+    return <NotFoundPage />
+  }
   const country = data?.[0];
   const borderingCountries = country?.borders;
   const name = country?.altSpellings[1];
@@ -26,6 +34,7 @@ export default function CountryPage() {
     currency = Object.keys(currencyObj)[0];
     currencyName = currencyObj[currency]?.name;
   }
+
   return (
     <>
       <Link to={"/"}>
@@ -58,7 +67,7 @@ export default function CountryPage() {
             <h3 className="font-bold">Border countries:</h3>
             <ul className="flex flex-wrap justify-between">
               {borderingCountries?.map((country, idx) => {
-                const countryName = countries.getName(country, "en")
+                const countryName = countries.getName(country, "en");
                 if (country !== "UNK") {
                   return (
                     <li

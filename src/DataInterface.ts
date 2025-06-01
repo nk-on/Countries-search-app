@@ -85,3 +85,7 @@ export interface Country {
   };
   unMember: boolean;
 }
+export interface NotFound {
+  message:"Not Found",
+  status:number
+}
