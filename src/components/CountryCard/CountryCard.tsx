@@ -12,7 +12,7 @@ export default function CountryCard({ country }: { country: Country }) {
     <Link to={`/${id}`}>
       <div className="mb-[40px] cursor-pointer w-[264px] min-h-[336px] bg-[#fff] dark:bg-[#2B3844;] shadow-custom-light dark:shadow-custom-dark rounded-[15px] ">
         <div className="w-[100%] min-h-[50%]">
-          <img src={`${flag}`} alt="flag" className=' rounded-t-[15px] max-h-[160px' />
+          <img src={`${flag}`} alt="flag" className=' rounded-t-[15px] max-h-[160px] w-[100%]' />
         </div>
         <div className='p-[20px] flex flex-col gap-[20px]'>
           <h1 className="font-bold text-[18px] dark:text-[#fff]">{countryName}</h1>

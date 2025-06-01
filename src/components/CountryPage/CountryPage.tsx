@@ -39,12 +39,13 @@ export default function CountryPage() {
   return (
     <>
       <Link to={"/"}>
-        <div className="absolute flex items-center gap-[5px] left-[10%] top-[20%] cursor-pointer">
-          <img src="public/back.svg" alt="back-button" />
+        <div className="w-[136px] h-[40px] rounded-[5px] dark:bg-[#2B3844] absolute flex items-center justify-center gap-[25px] left-[10%] top-[20%] cursor-pointer dark:text-[#fff]">
+          <div className="w-[20px] h-[20px] bg-[url(public/back.svg)] dark:bg-[url(public/backNigt.svg)] ">
+          </div>
           Back
         </div>
       </Link>
-      <div className="w-[100%] h-[100%] flex items-center justify-evenly">
+      <div className="w-[100%] h-[100%] flex items-center justify-evenly dark:bg-[#202C36] dark:text-[#fff]">
         <div>
           <img src={flag} className="h-[401px] w-[560px]" />
         </div>
