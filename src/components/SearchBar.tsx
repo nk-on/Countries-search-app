@@ -13,7 +13,7 @@ export default function SearchBar() {
       <input
         type="text"
         placeholder="search for a country"
-        className="h-[100%] w-[90%] outline-none dark:bg-[#2B3844]"
+        className="h-[100%] w-[90%] outline-none dark:bg-[#2B3844] dark:text-[#fff]"
         onKeyDown={(event)=>{
           if(event.key === "Enter"){
              navigate(`/${query.current}`)
