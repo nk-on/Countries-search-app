@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import type { Country } from '../../DataInterface';
 import ListItem from './ListItem';
 export default function CountryCard({ country }: { country: Country }) {
-  const countryName = country.altSpellings[1];
+  const countryName = country.name.common;
   const population = country.population;
   const capital = country.capital;
   const region = country.continents[0];
