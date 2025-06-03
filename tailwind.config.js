@@ -10,6 +10,9 @@ export default {
        boxShadow: {
         "custom-dark":"0px 0px 7px 2px rgba(0, 0, 0, 0.0294384)",
       },
+      boxShadow:{
+        "custom-search-bar":"0px 2px 9px rgba(0, 0, 0, 0.0532439)"
+      }
     },
   },
   plugins: [],

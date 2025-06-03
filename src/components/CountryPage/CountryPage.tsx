@@ -45,9 +45,9 @@ export default function CountryPage() {
           Back
         </div>
       </Link>
-      <div className="w-[100%] h-[100%] flex items-center justify-evenly dark:bg-[#202C36] dark:text-[#fff]">
+      <div className="w-[100%] min-h-[100%] flex flex-col lg:flex-row items-center custom-search-bar mt-[10%] lg:m-[0%] justify-evenly dark:bg-[#202C36] dark:text-[#fff]">
         <div>
-          <img src={flag} className="h-[401px] w-[560px]" />
+          <img src={flag} className="lg:h-[401px] h-[229px] w-[560px] " />
         </div>
         <div className="flex flex-col w-[30%]">
           <div className="flex justify-between">
