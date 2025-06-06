@@ -21,6 +21,7 @@ export default function CountryPage() {
   const country = data?.[0];
   const borderingCountries = country?.borders;
   const name = country?.altSpellings[1];
+  const countryName = country.name.common;
   const flag = country?.flags.svg;
   const nativeName = country?.altSpellings[2];
   const population = country?.population;
@@ -39,18 +40,19 @@ export default function CountryPage() {
   return (
     <>
       <Link to={"/"}>
-        <div className="w-[136px] h-[40px] rounded-[5px] dark:bg-[#2B3844] absolute flex items-center justify-center gap-[25px] left-[10%] top-[20%] cursor-pointer dark:text-[#fff]">
+        <div className="w-[136px] h-[40px] rounded-[5px] dark:bg-[#2B3844] bg-[#FAFAFA] absolute flex items-center justify-center gap-[25px] lg:left-[10%] left-[15%] top-[17%] cursor-pointer dark:text-[#fff]">
           <div className="w-[20px] h-[20px] bg-[url(public/back.svg)] dark:bg-[url(public/backNigt.svg)] ">
           </div>
           Back
         </div>
       </Link>
-      <div className="w-[100%] min-h-[100%] flex flex-col lg:flex-row items-center custom-search-bar mt-[10%] lg:m-[0%] justify-evenly dark:bg-[#202C36] dark:text-[#fff]">
+      <div className="w-[100%] h-[100vh]  flex flex-col lg:flex-row items-center custom-search-bar pt-[30%] lg:pt-[0%] lg:m-[0%] justify-evenly dark:bg-[#202C36] dark:text-[#fff]">
         <div>
-          <img src={flag} className="lg:h-[401px] h-[229px] w-[560px] " />
+          <img src={flag} className="lg:h-[401px] lg:w-[560px] w-[50vw]" />
         </div>
         <div className="flex flex-col w-[30%]">
-          <div className="flex justify-between">
+          <h1 className="font-bold lg:text-[32px] text-[22px]">{countryName}</h1>
+          <div className="flex lg:flex-row flex-col justify-between">
             <div>
               <DataContainer title="Country Code" data={countryCode} />
               <DataContainer title="Country Name" data={name} />
@@ -74,7 +76,7 @@ export default function CountryPage() {
                   return (
                     <li
                       key={idx}
-                      className="min-w-[96px] h-[28px] shadow-custom-gray flex justify-center items-center cursor-pointer"
+                      className="min-w-[96px] h-[28px] dark:bg-[#2B3844] bg-[#fff] shadow-custom-border flex justify-center items-center cursor-pointer"
                     >
                       <Link to={`/${countryName}`}>{countryName}</Link>
                     </li>
