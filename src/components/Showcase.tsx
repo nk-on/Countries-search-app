@@ -5,12 +5,11 @@ import { useContext } from 'react';
 import useFetchData from '../useFetchData';
 import type { Country } from '../DataInterface';
 import { DataContext } from '../DataContext';
-import Loading from './Loading';
 function Showcase() {
-  // const [query, setQuery] = useState<string>("");
   const data: Country[] | undefined = useFetchData(
-    'https://restcountries.com/v3.1/all'
+    'https://restcountries.com/v3.1/all?fields=name,flags,capital,region,population,continents'
   );
+  console.log(data)
   const { selectedRegion } = useContext(DataContext);
   const filteredData: Country[] | undefined = data?.filter(
     (element) => element.region === selectedRegion
