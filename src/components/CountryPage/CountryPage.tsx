@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router";
-import type { Country, NotFound } from "../../DataInterface";
 import useFetchData from "../../useFetchData";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";

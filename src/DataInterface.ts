@@ -85,7 +85,8 @@ export interface Country {
   };
   unMember: boolean;
 }
-export interface NotFound {
-  message:"Not Found",
-  status:number
+export interface FetchResults {
+    data?: Country[];
+    error?: boolean;
+    loading: boolean;
 }
