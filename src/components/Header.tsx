@@ -10,7 +10,7 @@ function Header({setDark}:HeaderProps) {
         setDark(dark => !dark)
       }}>
         <h3>Dark Mode</h3>
-        <img src='public/darkModeIcon.svg' alt='dark-mode' className='w-[20px] h-[20px]' />
+        <img src='./darkModeIcon.svg' alt='dark-mode' className='w-[20px] h-[20px]' />
       </div>
     </div>
   )
