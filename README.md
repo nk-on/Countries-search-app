@@ -21,7 +21,7 @@ It uses the [REST Countries API](https://restcountries.com/) to display informat
 
 ## 📸 Preview
 
-## ![sreenshot]('public/Screenshot.png')
+## ![screenshot](public/Screenshot.png)
 
 ## 🧰 Tech Stack
 
