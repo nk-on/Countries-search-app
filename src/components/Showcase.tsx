@@ -6,20 +6,19 @@ import useFetchData from '../useFetchData';
 import type { Country } from '../DataInterface';
 import { DataContext } from '../DataContext';
 import { NotFoundPage } from './NotFoundPage';
+import type { FetchResults } from '../DataInterface';
 function Showcase() {
-  const data: Country[] | undefined | string = useFetchData(
+  const FetchedData: FetchResults = useFetchData(
     'https://restcountries.com/v3.1/all?fields=name,flags,capital,region,population,continents'
   );
-  if(data === "Error"){
+  if(FetchedData.error){
     return <NotFoundPage />
   }
   const { selectedRegion } = useContext(DataContext);
-  let filteredData:Country[] | undefined 
-  if(typeof data !== "string"){
-    filteredData = data?.filter(
+  const {data} = FetchedData
+  const filteredData:Country[] | undefined =  data?.filter(
     (element) => element.region === selectedRegion
   );
-  }
   return (
     <div className="max-w-[100vw] min-h-[90%] dark:bg-[#202C36] bg-[#FAFAFA]">
       <div className="w-[90%] relative top-[30px] pl-[150px] flex flex-col gap-[30px] lg:flex-row justify-between lg:items-center px-[30px] mt-[30px]">
