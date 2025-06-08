@@ -6,7 +6,7 @@ export default function SearchBar() {
   return (
     <div className="px-[30px] lg:ml-[70px] rounded-[5px] lg:w-[480px]  h-[70px]   dark:bg-[#2B3844] bg-[#fff]   flex justify-between items-center shadow-custom-gray">
       <div>
-        <img src="./public/search.svg" className="cursor-pointer" onClick={()=>{
+        <img src="./search.svg" className="cursor-pointer" onClick={()=>{
           navigate(`/${query.current}`)
         }} />
       </div>
