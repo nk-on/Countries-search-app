@@ -1,54 +1,94 @@
-# React + TypeScript + Vite
+# 🌍 REST Countries Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive web app built with **React**, **TypeScript**, **Tailwind CSS**, and **React Router**.  
+It uses the [REST Countries API](https://restcountries.com/) to display information about countries around the world.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ✅ See all countries from the API on the homepage  
+- 🔍 Search for a country using an input field  
+- 🌍 Filter countries by region  
+- 📄 Click on a country to see more detailed information on a separate page  
+- 🔁 Click through to border countries on the detail page  
+- 📱 Responsive layout depending on screen size  
+- 🎨 Hover and focus states for all interactive elements  
+- 🌙 Bonus: Dark/light mode toggle  
+- ⏳ Loading indicator while fetching data  
+- ❌ Custom 404 page for invalid or unknown routes
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📸 Preview
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ![sreenshot]('public/Screenshot.png')
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧰 Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React** (UI)
+- **TypeScript** (type safety)
+- **Tailwind CSS** (utility-first styling)
+- **React Router** (routing)
+- **Fetch API** (or Axios, if preferred)
+- **REST Countries API v3.1**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 🔧 Installation & Setup
+
+### 1. Clone the repository
+
+- git clone https://github.com/your-username/rest-countries-explorer.git
+- cd rest-countries-explorer
+
+### 2. Install dependencies
+
+- npm install
+
+#### 3. Start the development server
+
+- npm run dev
+
+## 🔍 App Functionality
+
+### Homepage
+
+- Displays all countries fetched from the API
+- Includes a search input to filter countries by name
+- Region dropdown allows filtering by continent:
+  - Africa
+  - Americas
+  - Asia
+  - Europe
+  - Oceania
+
+---
+
+### Country Detail Page
+
+- Shows expanded country details:
+  - Native name
+  - Top-level domain
+  - Currencies
+  - Languages
+  - Subregion
+  - Capital
+  - Population
+- Border countries (if available) are displayed as buttons to navigate to their respective detail pages
+- Dynamic routing via: `/country/:countryName`
+
+---
+
+### Dark Mode
+
+- Users can toggle between **light** and **dark** themes using a switch in the header
+- Theme is implemented with Tailwind’s `dark:` classes
+- No persistent theme storage — resets on reload
+
+---
+
+## 🧱 Responsive Design
+
+- **Desktop**: Grid layout with 3–4 columns
+- **Tablet**: 2-column layout
+- **Mobile**: Stacked layout with dropdowns and search input at the top
