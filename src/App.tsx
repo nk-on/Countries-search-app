@@ -6,7 +6,6 @@ import { DataContext } from './DataContext';
 function App() {
   const [dark, setDark] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
-  const allElements = document.querySelectorAll('*');
   return (
     <>
       <div className={`${dark ? 'dark bg-[#2B3844]' : ''}`}>
