@@ -6,12 +6,14 @@ import enLocale from "i18n-iso-countries/langs/en.json";
 import DataContainer from "./DataCointainer";
 import { NotFoundPage } from "../NotFoundPage";
 import Loading from "../Loading";
+import type { FetchResults } from "../../DataInterface";
 countries.registerLocale(enLocale);
 export default function CountryPage() {
   const { id } = useParams();
-  const data: Country[] | undefined | NotFound = useFetchData(
+  const fetchedData: FetchResults = useFetchData(
     `https://restcountries.com/v3.1/name/${id}`
   );
+  const {data}  =fetchedData
   if (data === undefined) {
     return <Loading />
   }
@@ -20,7 +22,6 @@ export default function CountryPage() {
   }
   const country = data?.[0];
   const borderingCountries = country?.borders;
-  const name = country?.altSpellings[1];
   const countryName = country.name.common;
   const flag = country?.flags.svg;
   const nativeName = country?.altSpellings[2];
@@ -36,7 +37,6 @@ export default function CountryPage() {
     currency = Object.keys(currencyObj)[0];
     currencyName = currencyObj[currency]?.name;
   }
-
   return (
     <>
       <Link to={"/"}>
@@ -55,7 +55,7 @@ export default function CountryPage() {
           <div className="flex lg:flex-row flex-col justify-between">
             <div>
               <DataContainer title="Country Code" data={countryCode} />
-              <DataContainer title="Country Name" data={name} />
+              <DataContainer title="Country Name" data={countryName} />
               <DataContainer title="Native Name" data={nativeName} />
               <DataContainer title="Population" data={population} />
               <DataContainer title="Region" data={region} />
