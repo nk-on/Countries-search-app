@@ -1,7 +1,7 @@
 function Loading() {
   return (
-    <div className="w-[100%] h-[100%]  flex justify-center items-center">
-      <div className="flex flex-col items-center">
+    <div className="w-[100%] h-[100%] mt-[25%] flex  justify-center items-center dark:text-[#fff]">
+      <div className="flex flex-col h-[100%] items-center">
         <video id="Loading-animation" autoPlay>
           <source src="./AnimationLoading.webm" type="video/webm"></source>
         </video>

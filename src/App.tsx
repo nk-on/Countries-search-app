@@ -8,7 +8,7 @@ function App() {
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
   return (
     <>
-      <div className={`${dark ? 'dark bg-[#2B3844]' : ''}`}>
+      <div className={`${dark ? 'dark bg-[#2B3844]' : ''} h-[100vh]`}>
         <DataContext.Provider value={{ selectedRegion, setSelectedRegion }}>
           <Header setDark={setDark}></Header>
           <Outlet />
