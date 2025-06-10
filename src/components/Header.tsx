@@ -4,7 +4,7 @@ interface HeaderProps {
 }
 function Header({setDark}:HeaderProps) {
   return (
-    <div className='w-[100%] h-[5%] bg-[#fff] dark:text-[#fff]  dark:bg-[#2B3844]  shadow-custom-light flex justify-between items-center pr-[50px] pt-[30px] px-[40px] lg:px-[70px]'>
+    <div className='absolute w-[100%] h-[80px] top-[0] left-[0] bg-[#fff] dark:text-[#fff]  dark:bg-[#2B3844]  shadow-custom-light flex justify-between items-center pr-[50px]pt-[35px] px-[40px] lg:px-[70px]'>
       <h2 className='text-[#111517] font-bold dark:text-[#fff]'>Where in the world?</h2>
       <div className='flex gap-[10px]' onClick={()=>{
         setDark(dark => !dark)

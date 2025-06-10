@@ -45,7 +45,7 @@ export default function CountryPage() {
           Back
         </div>
       </Link>
-      <div className="w-[100%] h-[100vh]  flex flex-col lg:flex-row items-center custom-search-bar pt-[30%] lg:pt-[0%] lg:m-[0%] justify-evenly dark:bg-[#202C36] dark:text-[#fff]">
+      <div className="w-[100%] min-h-[100vh]  pb-[10px] flex flex-col lg:flex-row items-center custom-search-bar pt-[30%] lg:pt-[0%] mt-[5%] lg:mt-[5%] justify-evenly dark:bg-[#202C36] dark:text-[#fff]">
         <div>
           <img src={flag} className="lg:h-[401px] lg:w-[560px] w-[50vw]" />
         </div>
@@ -68,14 +68,14 @@ export default function CountryPage() {
           </div>
           <div className="flex">
             <h3 className="font-bold">Border countries:</h3>
-            <ul className="flex flex-wrap justify-between">
+            <ul className="flex flex-wrap justify-between gap-[20px] lg:gap-[5px]">
               {borderingCountries?.map((country, idx) => {
                 const countryName = countries.getName(country, "en");
                 if (country !== "UNK") {
                   return (
                     <li
                       key={idx}
-                      className="min-w-[96px] h-[28px] dark:bg-[#2B3844] bg-[#fff] shadow-custom-border flex justify-center items-center cursor-pointer"
+                      className="min-w-[96px] p-[20px] h-[28px] dark:bg-[#2B3844] bg-[#fff] shadow-custom-border flex justify-center items-center cursor-pointer"
                     >
                       <Link to={`/${countryName}`}>{countryName}</Link>
                     </li>
