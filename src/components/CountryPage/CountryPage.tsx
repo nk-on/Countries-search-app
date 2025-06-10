@@ -40,7 +40,7 @@ export default function CountryPage() {
     <>
       <Link to={"/"}>
         <div className="w-[136px] h-[40px] rounded-[5px] dark:bg-[#2B3844] bg-[#FAFAFA] absolute flex items-center justify-center gap-[25px] lg:left-[10%] left-[15%] top-[17%] cursor-pointer dark:text-[#fff]">
-          <div className="w-[20px] h-[20px] bg-[url(./back.svg)] dark:bg-[url(./backNigt.svg)] ">
+          <div className="w-[20px] h-[20px] bg-[url(/back.svg)] dark:bg-[url(/backNigt.svg)] ">
           </div>
           Back
         </div>
