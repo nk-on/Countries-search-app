@@ -11,10 +11,10 @@ function Showcase() {
   const FetchedData: FetchResults = useFetchData(
     "https://restcountries.com/v3.1/all?fields=name,flags,capital,region,population,continents"
   );
+  const { selectedRegion } = useContext(DataContext);
   if (FetchedData.error) {
     return <NotFoundPage />;
   }
-  const { selectedRegion } = useContext(DataContext);
   const { data } = FetchedData;
   const filteredData: Country[] | undefined = data?.filter(
     (element) => element.region === selectedRegion
