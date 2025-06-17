@@ -18,7 +18,6 @@ export default function useFetchData(url: string) {
             loading: true
         })).catch((err) => {
             setData({ error: true, loading: false })
-            console.log(err)
         })
     }, [url]);
     return data
